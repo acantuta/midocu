@@ -15,6 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'areas'], function () {
+        Route::get('/', 'Admin\AreasController@index');
+        Route::get('/create', 'Admin\AreasController@create');
+        ROute::post('/', 'Admin\AreasController@store');
+        Route::get('/{areaId}/edit', 'Admin\AreasController@edit');
+        Route::put('/{areaId}/edit', 'Admin\AreasController@update');
+        Route::delete('/{areaId}', 'Admin\AreasController@delete');
+    });
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
