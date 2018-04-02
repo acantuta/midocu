@@ -15,7 +15,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'nombres',
+        'apellidos',
+        'direccion',
+        'telefono',
+        'area_id',
     ];
 
     /**
@@ -26,4 +33,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return $this->nombres . ' ' . $this->apellidos;
+    }
 }

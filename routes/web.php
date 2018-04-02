@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {
     Route::group(['prefix' => 'areas'], function () {
         Route::get('/', 'Admin\AreasController@index');
         Route::get('/create', 'Admin\AreasController@create');
@@ -23,6 +23,24 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{areaId}/edit', 'Admin\AreasController@edit');
         Route::put('/{areaId}/edit', 'Admin\AreasController@update');
         Route::delete('/{areaId}', 'Admin\AreasController@delete');
+    });
+
+    Route::group(['prefix' => 'expediente-tipos'], function () {
+        Route::get('/', 'Admin\ExpedienteTiposController@index');
+        Route::get('/create', 'Admin\ExpedienteTiposController@create');
+        ROute::post('/', 'Admin\ExpedienteTiposController@store');
+        Route::get('/{areaId}/edit', 'Admin\ExpedienteTiposController@edit');
+        Route::put('/{areaId}/edit', 'Admin\ExpedienteTiposController@update');
+        Route::delete('/{areaId}', 'Admin\ExpedienteTiposController@delete');
+    });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', 'Admin\UsersController@index');
+        Route::get('/create', 'Admin\UsersController@create');
+        ROute::post('/', 'Admin\UsersController@store');
+        Route::get('/{areaId}/edit', 'Admin\UsersController@edit');
+        Route::put('/{areaId}/edit', 'Admin\UsersController@update');
+        Route::delete('/{areaId}', 'Admin\UsersController@delete');
     });
 });
 
