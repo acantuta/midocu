@@ -44,6 +44,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {
     });
 });
 
+Route::group(['middleware' => 'auth:web'], function () {
+    Route::group(['prefix' => 'personas'], function () {
+        Route::get('/', 'PersonasController@index');
+        Route::get('/create', 'PersonasController@create');
+        ROute::post('/', 'PersonasController@store');
+        Route::get('/{personaId}/edit', 'PersonasController@edit');
+        Route::put('/{personaId}/edit', 'PersonasController@update');
+        Route::delete('/{personaId}', 'PersonasController@delete');
+    });
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
