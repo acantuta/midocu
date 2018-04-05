@@ -11,7 +11,7 @@
             </a>
         </li>
         <li>
-            <a ui-sref="layouts" href="{{ url('/admin/expediente-tipos') }}">
+            <a ui-sref="layouts" href="{{ url('/expedientes') }}">
                 <i class="fa fa-building"></i>
                 <span class="nav-label ng-binding">
                     Expedientes

@@ -53,6 +53,15 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::put('/{personaId}/edit', 'PersonasController@update');
         Route::delete('/{personaId}', 'PersonasController@delete');
     });
+
+    Route::group(['prefix' => 'expedientes'], function () {
+        Route::get('/', 'ExpedientesController@index');
+        Route::get('/create', 'ExpedientesController@create');
+        ROute::post('/', 'ExpedientesController@store');
+        Route::get('/{personaId}/edit', 'ExpedientesController@edit');
+        Route::put('/{personaId}/edit', 'ExpedientesController@update');
+        Route::delete('/{personaId}', 'ExpedientesController@delete');
+    });
 });
 
 Auth::routes();

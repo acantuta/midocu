@@ -18,7 +18,9 @@ class PersonasController extends Controller
     public function create(Request $request)
     {
         $tipos = ['natural' => 'natural', 'juridica' => 'juridica'];
+        $prioridades ['normal' => 'normal', 'urgente']
         $data = compact('tipos');
+
         return view('personas.create', $data);
     }
 
